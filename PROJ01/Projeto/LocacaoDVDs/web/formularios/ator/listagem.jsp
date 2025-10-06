@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
 
   </head>
 
@@ -17,56 +18,52 @@
 
     <h1>Atores</h1>
 
-    <p>
-      <a href="${cp}/processaAtor?acao=prepararNovo">Novo Ator</a>
-    </p>
+    <div class="content-wrapper">
+        <div class="header-action">
+            <a href="${cp}/processaAtor?acao=prepararNovo" class="btn">Novo Ator</a>
+        </div>
 
-    <table class="tabelaListagem">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nome</th>
-          <th>Sobrenome</th>
-          <th>Data de Estreia</th>
-          <th>Alterar</th>
-          <th>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
+        <table class="tabelaListagem">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>Data de Estreia</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
 
-        <jsp:useBean 
-            id="servicos" 
-            scope="page" 
-            class="cadastroclientes.servicos.AtorServices"/>
+                <jsp:useBean 
+                    id="servicos" 
+                    scope="page" 
+                    class="cadastroclientes.servicos.AtorServices"/>
 
-        <c:forEach items="${atores}" var="ator">
-          <tr>
-            <td>${ator.id}</td>
-            <td>${ator.nome}</td>
-            <td>${ator.sobrenome}</td>
-            <td>
-              <fmt:formatDate value="${ator.dataEstreia}" pattern="dd/MM/yyyy"/>
-            </td>
-            <td>
-              <a href="${cp}/processaAtor?acao=prepararAlteracao&id=${ator.id}">
-                Alterar
-              </a>
-            </td>
-            <td>
-              <a href="${cp}/processaAtor?acao=prepararExclusao&id=${ator.id}">
-                Excluir
-              </a>
-            </td>
-          </tr>
-        </c:forEach>
+                <c:forEach items="${atores}" var="ator">
+                    <tr>
+                        <td>${ator.id}</td>
+                        <td>${ator.nome}</td>
+                        <td>${ator.sobrenome}</td>
+                        <td>
+                            <fmt:formatDate value="${ator.dataEstreia}" pattern="dd/MM/yyyy"/>
+                        </td>
+                        <td class="table-actions">
+                            <a href="${cp}/processaAtor?acao=prepararAlteracao&id=${ator.id}">
+                                Alterar
+                            </a>
+                            <a href="${cp}/processaAtor?acao=prepararExclusao&id=${ator.id}">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
 
-      </tbody>
+            </tbody>
+        </table>
+    </div>
 
-    </table>
-
-    <p>
-      <a href="${cp}/index.jsp">Tela Principal</a>
-    </p>
+    <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
 
   </body>
 
