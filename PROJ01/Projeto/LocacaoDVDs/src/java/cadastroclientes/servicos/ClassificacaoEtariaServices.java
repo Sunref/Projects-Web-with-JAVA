@@ -53,6 +53,14 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/classificacaoEtaria/alteracao.jsp" );
 
+            } else if ( acao.equals( "prepararExclusao" ) ) {
+
+                int id = Integer.parseInt(request.getParameter( "id" ));
+                ClassificacaoEtaria classificacaoEtaria = dao.obterPorId( id );
+                request.setAttribute( "classificacaoEtaria", classificacaoEtaria );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/classificacaoEtaria/excluir.jsp" );
+
             } else if ( acao.equals( "novo" ) ) {
 
                 String descricao = request.getParameter( "descricao" );

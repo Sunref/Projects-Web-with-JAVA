@@ -53,6 +53,14 @@ public class GeneroServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/genero/alteracao.jsp" );
 
+            } else if ( acao.equals( "prepararExclusao" ) ) {
+
+                int id = Integer.parseInt(request.getParameter( "id" ));
+                Genero genero = dao.obterPorId( id );
+                request.setAttribute( "genero", genero );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/genero/excluir.jsp" );
+
             } else if ( acao.equals( "novo" ) ) {
 
                 String descricao = request.getParameter( "descricao" );

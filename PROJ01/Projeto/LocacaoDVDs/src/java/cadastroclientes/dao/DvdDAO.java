@@ -17,7 +17,7 @@ import java.util.List;
  * @author Fernanda M. bv3032345
  * 
  */
-public class DvdDAO extends DAO<Dvd> {
+public class DvdDAO extends DAO<Dvd> implements AutoCloseable{
 
     public DvdDAO() throws SQLException {
     }
@@ -275,6 +275,13 @@ public class DvdDAO extends DAO<Dvd> {
 
         return dvd;
 
+    }
+    
+    @Override
+    public void close() throws SQLException {
+        if (getConnection() != null && !getConnection().isClosed()) {
+            getConnection().close();
+        }
     }
 
 }

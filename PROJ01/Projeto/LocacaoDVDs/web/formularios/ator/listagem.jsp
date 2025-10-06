@@ -53,8 +53,7 @@
               </a>
             </td>
             <td>
-              <a href="${cp}/processaAtor?acao=excluir&id=${ator.id}" 
-                 onclick="return confirm('Tem certeza que deseja excluir este ator?')">
+              <a href="${cp}/processaAtor?acao=prepararExclusao&id=${ator.id}">
                 Excluir
               </a>
             </td>

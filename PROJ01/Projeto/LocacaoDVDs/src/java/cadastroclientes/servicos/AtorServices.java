@@ -54,6 +54,14 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/ator/alteracao.jsp" );
 
+            } else if ( acao.equals( "prepararExclusao" ) ) {
+
+                int id = Integer.parseInt(request.getParameter( "id" ));
+                Ator ator = dao.obterPorId( id );
+                request.setAttribute( "ator", ator );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/ator/excluir.jsp" );
+
             } else if ( acao.equals( "novo" ) ) {
 
                 String nome = request.getParameter( "nome" );

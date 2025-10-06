@@ -14,7 +14,7 @@ import java.util.List;
  * @author Fernanda M. bv3032345
  * 
  */
-public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> {
+public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements AutoCloseable{
 
     public ClassificacaoEtariaDAO() throws SQLException {
     }
@@ -143,6 +143,13 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> {
 
         return classificacaoEtaria;
 
+    }
+    
+    @Override
+    public void close() throws SQLException {
+        if (getConnection() != null && !getConnection().isClosed()) {
+            getConnection().close();
+        }
     }
 
 }

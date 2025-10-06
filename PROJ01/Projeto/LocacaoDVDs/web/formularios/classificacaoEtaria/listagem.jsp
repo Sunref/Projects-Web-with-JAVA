@@ -47,8 +47,7 @@
               </a>
             </td>
             <td>
-              <a href="${cp}/processaClassificacaoEtaria?acao=excluir&id=${classificacao.id}" 
-                 onclick="return confirm('Tem certeza que deseja excluir esta classificação etária?')">
+              <a href="${cp}/processaClassificacaoEtaria?acao=prepararExclusao&id=${classificacao.id}">
                 Excluir
               </a>
             </td>

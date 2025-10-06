@@ -59,8 +59,7 @@
               </a>
             </td>
             <td>
-              <a href="${cp}/processaDvd?acao=excluir&id=${dvd.id}" 
-                 onclick="return confirm('Tem certeza que deseja excluir este DVD?')">
+              <a href="${cp}/processaDvd?acao=prepararExclusao&id=${dvd.id}">
                 Excluir
               </a>
             </td>

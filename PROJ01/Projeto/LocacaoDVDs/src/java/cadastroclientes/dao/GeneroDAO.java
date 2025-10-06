@@ -14,7 +14,7 @@ import java.util.List;
  * @author Fernanda M. bv3032345
  * 
  */
-public class GeneroDAO extends DAO<Genero> {
+public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
 
     public GeneroDAO() throws SQLException {
     }
@@ -143,6 +143,13 @@ public class GeneroDAO extends DAO<Genero> {
 
         return genero;
 
+    }
+    
+    @Override
+    public void close() throws SQLException {
+        if (getConnection() != null && !getConnection().isClosed()) {
+            getConnection().close();
+        }
     }
 
 }

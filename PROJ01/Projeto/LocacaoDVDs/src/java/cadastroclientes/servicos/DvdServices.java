@@ -89,6 +89,14 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/dvd/alteracao.jsp" );
 
+            } else if ( acao.equals( "prepararExclusao" ) ) {
+
+                int id = Integer.parseInt(request.getParameter( "id" ));
+                Dvd dvd = dao.obterPorId( id );
+                request.setAttribute( "dvd", dvd );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/dvd/excluir.jsp" );
+
             } else if ( acao.equals( "novo" ) ) {
 
                 String titulo = request.getParameter( "titulo" );

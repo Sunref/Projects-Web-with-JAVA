@@ -46,7 +46,7 @@
               </a>
             </td>
             <td>
-              <a href="${cp}/processaGenero?acao=excluir&id=${genero.id}">
+              <a href="${cp}/processaGenero?acao=prepararExclusao&id=${genero.id}">
                 Excluir
               </a>
             </td>
