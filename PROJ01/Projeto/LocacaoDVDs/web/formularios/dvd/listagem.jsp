@@ -18,26 +18,26 @@
 
     <h1>DVDs</h1>
 
-    <p>
-      <a href="${cp}/processaDvd?acao=prepararNovo">Novo DVD</a>
-    </p>
+    <div class="content-wrapper">
+      <div class="header-action">
+        <a href="${cp}/processaDvd?acao=prepararNovo" class="btn">Novo DVD</a>
+      </div>
 
-    <table class="tabelaListagem">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Título</th>
-          <th>Ano</th>
-          <th>Ator Principal</th>
-          <th>Ator Coadjuvante</th>
-          <th>Gênero</th>
-          <th>Classificação</th>
-          <th>Duração (min)</th>
-          <th>Alterar</th>
-          <th>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
+      <table class="tabelaListagem">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Ator Principal</th>
+            <th>Ator Coadjuvante</th>
+            <th>Gênero</th>
+            <th>Classificação</th>
+            <th>Duração (min)</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
 
         <jsp:useBean 
             id="servicos" 
@@ -54,26 +54,19 @@
             <td>${dvd.genero.descricao}</td>
             <td>${dvd.classificacaoEtaria.descricao}</td>
             <td>${dvd.duracaoMinutos}</td>
-            <td>
-              <a href="${cp}/processaDvd?acao=prepararAlteracao&id=${dvd.id}">
-                Alterar
-              </a>
-            </td>
-            <td>
-              <a href="${cp}/processaDvd?acao=prepararExclusao&id=${dvd.id}">
-                Excluir
-              </a>
+            <td class="table-actions">
+              <a href="${cp}/processaDvd?acao=prepararAlteracao&id=${dvd.id}">Alterar</a>
+              <a href="${cp}/processaDvd?acao=prepararExclusao&id=${dvd.id}" class="delete">Excluir</a>
             </td>
           </tr>
         </c:forEach>
 
       </tbody>
 
-    </table>
+      </table>
+    </div>
 
-    <p>
-      <a href="${cp}/index.jsp">Tela Principal</a>
-    </p>
+    <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
 
   </body>
 

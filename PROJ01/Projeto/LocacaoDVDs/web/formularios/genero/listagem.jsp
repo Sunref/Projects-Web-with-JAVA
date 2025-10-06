@@ -17,20 +17,20 @@
 
     <h1>Gêneros</h1>
 
-    <p>
-      <a href="${cp}/processaGenero?acao=prepararNovo">Novo Gênero</a>
-    </p>
+    <div class="content-wrapper">
+      <div class="header-action">
+        <a href="${cp}/processaGenero?acao=prepararNovo" class="btn">Novo Gênero</a>
+      </div>
 
-    <table class="tabelaListagem">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Descrição</th>
-          <th>Alterar</th>
-          <th>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
+      <table class="tabelaListagem">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
 
         <jsp:useBean 
             id="servicos" 
@@ -41,26 +41,19 @@
           <tr>
             <td>${genero.id}</td>
             <td>${genero.descricao}</td>
-            <td>
-              <a href="${cp}/processaGenero?acao=prepararAlteracao&id=${genero.id}">
-                Alterar
-              </a>
-            </td>
-            <td>
-              <a href="${cp}/processaGenero?acao=prepararExclusao&id=${genero.id}">
-                Excluir
-              </a>
+            <td class="table-actions">
+              <a href="${cp}/processaGenero?acao=prepararAlteracao&id=${genero.id}">Alterar</a>
+              <a href="${cp}/processaGenero?acao=prepararExclusao&id=${genero.id}" class="delete">Excluir</a>
             </td>
           </tr>
         </c:forEach>
 
       </tbody>
 
-    </table>
+      </table>
+    </div>
 
-    <p>
-      <a href="${cp}/index.jsp">Tela Principal</a>
-    </p>
+    <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
 
   </body>
 

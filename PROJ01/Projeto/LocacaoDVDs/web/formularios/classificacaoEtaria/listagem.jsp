@@ -18,20 +18,20 @@
 
     <h1>Classificações Etárias</h1>
 
-    <p>
-      <a href="${cp}/processaClassificacaoEtaria?acao=prepararNovo">Nova Classificação Etária</a>
-    </p>
+    <div class="content-wrapper">
+      <div class="header-action">
+        <a href="${cp}/processaClassificacaoEtaria?acao=prepararNovo" class="btn">Nova Classificação Etária</a>
+      </div>
 
-    <table class="tabelaListagem">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Descrição</th>
-          <th>Alterar</th>
-          <th>Excluir</th>
-        </tr>
-      </thead>
-      <tbody>
+      <table class="tabelaListagem">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
 
         <jsp:useBean 
             id="servicos" 
@@ -42,26 +42,19 @@
           <tr>
             <td>${classificacao.id}</td>
             <td>${classificacao.descricao}</td>
-            <td>
-              <a href="${cp}/processaClassificacaoEtaria?acao=prepararAlteracao&id=${classificacao.id}">
-                Alterar
-              </a>
-            </td>
-            <td>
-              <a href="${cp}/processaClassificacaoEtaria?acao=prepararExclusao&id=${classificacao.id}">
-                Excluir
-              </a>
+            <td class="table-actions">
+              <a href="${cp}/processaClassificacaoEtaria?acao=prepararAlteracao&id=${classificacao.id}">Alterar</a>
+              <a href="${cp}/processaClassificacaoEtaria?acao=prepararExclusao&id=${classificacao.id}" class="delete">Excluir</a>
             </td>
           </tr>
         </c:forEach>
 
       </tbody>
 
-    </table>
+      </table>
+    </div>
 
-    <p>
-      <a href="${cp}/index.jsp">Tela Principal</a>
-    </p>
+    <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
 
   </body>
 
