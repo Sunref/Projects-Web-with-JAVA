@@ -39,7 +39,7 @@ h1 {
 }
 .content-wrapper {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   background-color: var(--container-background);
   padding: 1.5rem 2rem;
   border-radius: var(--border-radius);
@@ -110,7 +110,7 @@ a:hover {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2rem;
-  min-width: 900px; /* ensure table keeps readable column widths; will scroll inside content-wrapper */
+  min-width: 1200px; /* aumentado para menos apertamento das colunas em tabelas grandes */
 }
 .tabelaListagem th,
 .tabelaListagem td {
