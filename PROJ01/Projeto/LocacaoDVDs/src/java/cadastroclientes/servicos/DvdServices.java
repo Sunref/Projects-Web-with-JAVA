@@ -40,14 +40,14 @@ public class DvdServices extends HttpServlet {
 
         try ( DvdDAO dao = new DvdDAO() ) {
 
-            if ( acao.equals( "listar" ) ) {
+            if ( acao != null && acao.equals( "listar" ) ) {
 
                 List<Dvd> dvds = dao.listarTodos();
                 request.setAttribute( "dvds", dvds );
                 disp = request.getRequestDispatcher( 
                         "/formularios/dvd/listagem.jsp" );
 
-            } else if ( acao.equals( "prepararNovo" ) ) {
+            } else if ( acao != null && acao.equals( "prepararNovo" ) ) {
 
                 try ( AtorDAO atorDAO = new AtorDAO();
                       GeneroDAO generoDAO = new GeneroDAO();
@@ -66,7 +66,7 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/dvd/novo.jsp" );
 
-            } else if ( acao.equals( "prepararAlteracao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararAlteracao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 Dvd dvd = dao.obterPorId( id );
@@ -89,7 +89,7 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/dvd/alteracao.jsp" );
 
-            } else if ( acao.equals( "prepararExclusao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararExclusao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 Dvd dvd = dao.obterPorId( id );
@@ -97,7 +97,7 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/dvd/excluir.jsp" );
 
-            } else if ( acao.equals( "novo" ) ) {
+            } else if ( acao != null && acao.equals( "novo" ) ) {
 
                 String titulo = request.getParameter( "titulo" );
                 int anoLancamento = Integer.parseInt( request.getParameter( "anoLancamento" ) );
@@ -134,7 +134,7 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaDvd?acao=listar" );
 
-            } else if ( acao.equals( "alterar" ) ) {
+            } else if ( acao != null && acao.equals( "alterar" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 String titulo = request.getParameter( "titulo" );
@@ -173,7 +173,7 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaDvd?acao=listar" );
 
-            } else if ( acao.equals( "excluir" ) ) {
+            } else if ( acao != null && acao.equals( "excluir" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 Dvd d = new Dvd();
@@ -183,13 +183,23 @@ public class DvdServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaDvd?acao=listar" );
 
+            } else {
+                // Ação inválida ou nula - redireciona para listagem
+                List<Dvd> dvds = dao.listarTodos();
+                request.setAttribute( "dvds", dvds );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/dvd/listagem.jsp" );
             }
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
+            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            disp = request.getRequestDispatcher( "/formularios/dvd/listagem.jsp" );
         }
 
-        disp.forward( request, response );
+        if ( disp != null ) {
+            disp.forward( request, response );
+        }
 
     }
 

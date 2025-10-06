@@ -21,15 +21,12 @@ public class ConnectionFactory {
      * @throws SQLException Caso ocorra algum problema durante a conexão.
      */
     public static Connection getConnection() throws SQLException {
+        // URL JDBC do MariaDB
+        String url = "jdbc:mariadb://localhost:3306/locacao_dvds";
+        String usuario = "fernanda";
+        String senha = "senha123";
 
-        // o método getConnection de DriverManager recebe como parâmetro
-        // a URL da base de dados, o usuário usado para conectar na base
-        // e a senha deste usuário.
-        return DriverManager.getConnection(
-                "jdbc:mariadb://localhost/locacao_dvds",
-                "root",
-                "root" );
-
+        return DriverManager.getConnection(url, usuario, senha);
     }
 
 }

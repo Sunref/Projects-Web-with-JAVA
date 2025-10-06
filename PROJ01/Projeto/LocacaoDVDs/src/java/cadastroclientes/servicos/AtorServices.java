@@ -34,19 +34,19 @@ public class AtorServices extends HttpServlet {
 
         try ( AtorDAO dao = new AtorDAO() ) {
 
-            if ( acao.equals( "listar" ) ) {
+            if ( acao != null && acao.equals( "listar" ) ) {
 
                 List<Ator> atores = dao.listarTodos();
                 request.setAttribute( "atores", atores );
                 disp = request.getRequestDispatcher( 
                         "/formularios/ator/listagem.jsp" );
 
-            } else if ( acao.equals( "prepararNovo" ) ) {
+            } else if ( acao != null && acao.equals( "prepararNovo" ) ) {
 
                 disp = request.getRequestDispatcher( 
                         "/formularios/ator/novo.jsp" );
 
-            } else if ( acao.equals( "prepararAlteracao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararAlteracao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 Ator ator = dao.obterPorId( id );
@@ -54,7 +54,7 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/ator/alteracao.jsp" );
 
-            } else if ( acao.equals( "prepararExclusao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararExclusao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 Ator ator = dao.obterPorId( id );
@@ -62,7 +62,7 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/ator/excluir.jsp" );
 
-            } else if ( acao.equals( "novo" ) ) {
+            } else if ( acao != null && acao.equals( "novo" ) ) {
 
                 String nome = request.getParameter( "nome" );
                 String sobrenome = request.getParameter( "sobrenome" );
@@ -77,7 +77,7 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaAtor?acao=listar" );
 
-            } else if ( acao.equals( "alterar" ) ) {
+            } else if ( acao != null && acao.equals( "alterar" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 String nome = request.getParameter( "nome" );
@@ -94,7 +94,7 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaAtor?acao=listar" );
 
-            } else if ( acao.equals( "excluir" ) ) {
+            } else if ( acao != null && acao.equals( "excluir" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 Ator a = new Ator();
@@ -104,13 +104,23 @@ public class AtorServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaAtor?acao=listar" );
 
+            } else {
+                // Ação inválida ou nula - redireciona para listagem
+                List<Ator> atores = dao.listarTodos();
+                request.setAttribute( "atores", atores );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/ator/listagem.jsp" );
             }
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
+            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            disp = request.getRequestDispatcher( "/formularios/ator/listagem.jsp" );
         }
 
-        disp.forward( request, response );
+        if ( disp != null ) {
+            disp.forward( request, response );
+        }
 
     }
 

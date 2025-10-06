@@ -33,19 +33,19 @@ public class ClassificacaoEtariaServices extends HttpServlet {
 
         try ( ClassificacaoEtariaDAO dao = new ClassificacaoEtariaDAO() ) {
 
-            if ( acao.equals( "listar" ) ) {
+            if ( acao != null && acao.equals( "listar" ) ) {
 
                 List<ClassificacaoEtaria> classificacoesEtarias = dao.listarTodos();
                 request.setAttribute( "classificacoesEtarias", classificacoesEtarias );
                 disp = request.getRequestDispatcher( 
                         "/formularios/classificacaoEtaria/listagem.jsp" );
 
-            } else if ( acao.equals( "prepararNovo" ) ) {
+            } else if ( acao != null && acao.equals( "prepararNovo" ) ) {
 
                 disp = request.getRequestDispatcher( 
                         "/formularios/classificacaoEtaria/novo.jsp" );
 
-            } else if ( acao.equals( "prepararAlteracao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararAlteracao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 ClassificacaoEtaria classificacaoEtaria = dao.obterPorId( id );
@@ -53,7 +53,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/classificacaoEtaria/alteracao.jsp" );
 
-            } else if ( acao.equals( "prepararExclusao" ) ) {
+            } else if ( acao != null && acao.equals( "prepararExclusao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 ClassificacaoEtaria classificacaoEtaria = dao.obterPorId( id );
@@ -61,7 +61,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/formularios/classificacaoEtaria/excluir.jsp" );
 
-            } else if ( acao.equals( "novo" ) ) {
+            } else if ( acao != null && acao.equals( "novo" ) ) {
 
                 String descricao = request.getParameter( "descricao" );
 
@@ -72,7 +72,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaClassificacaoEtaria?acao=listar" );
 
-            } else if ( acao.equals( "alterar" ) ) {
+            } else if ( acao != null && acao.equals( "alterar" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 String descricao = request.getParameter( "descricao" );
@@ -85,7 +85,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaClassificacaoEtaria?acao=listar" );
 
-            } else if ( acao.equals( "excluir" ) ) {
+            } else if ( acao != null && acao.equals( "excluir" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
                 ClassificacaoEtaria ce = new ClassificacaoEtaria();
@@ -95,13 +95,23 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                 disp = request.getRequestDispatcher( 
                         "/processaClassificacaoEtaria?acao=listar" );
 
+            } else {
+                // Ação inválida ou nula - redireciona para listagem
+                List<ClassificacaoEtaria> classificacoesEtarias = dao.listarTodos();
+                request.setAttribute( "classificacoesEtarias", classificacoesEtarias );
+                disp = request.getRequestDispatcher( 
+                        "/formularios/classificacaoEtaria/listagem.jsp" );
             }
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
+            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            disp = request.getRequestDispatcher( "/formularios/classificacaoEtaria/listagem.jsp" );
         }
 
-        disp.forward( request, response );
+        if ( disp != null ) {
+            disp.forward( request, response );
+        }
 
     }
 
