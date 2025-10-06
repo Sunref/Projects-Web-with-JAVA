@@ -17,7 +17,7 @@
 
     <h1>Novo Ator</h1>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper narrow">
         <form method="post" action="${cp}/processaAtor">
             <input type="hidden" name="acao" value="novo"/>
 

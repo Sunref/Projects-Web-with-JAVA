@@ -18,23 +18,23 @@
 
     <h1>Alterar DVD</h1>
 
-    <div>
-      <form method="post" action="${cp}/processaDvd">
+  <div class="content-wrapper narrow">
+    <form method="post" action="${cp}/processaDvd" class="form">
         <input type="hidden" name="acao" value="alterar"/>
         <input type="hidden" name="id" value="${dvd.id}"/>
-        
-        <div>
-          <label for="titulo">Título:</label>
+
+        <div class="form-group">
+          <label for="titulo">Título</label>
           <input type="text" id="titulo" name="titulo" value="${dvd.titulo}" required/>
         </div>
-        
-        <div>
-          <label for="anoLancamento">Ano de Lançamento:</label>
+
+        <div class="form-group">
+          <label for="anoLancamento">Ano de Lançamento</label>
           <input type="number" id="anoLancamento" name="anoLancamento" value="${dvd.anoLancamento}" required min="1900" max="2024"/>
         </div>
-        
-        <div>
-          <label for="atorPrincipalId">Ator Principal:</label>
+
+        <div class="form-group">
+          <label for="atorPrincipalId">Ator Principal</label>
           <select id="atorPrincipalId" name="atorPrincipalId" required>
             <option value="">Selecione um ator</option>
             <c:forEach items="${atores}" var="ator">
@@ -44,9 +44,9 @@
             </c:forEach>
           </select>
         </div>
-        
-        <div>
-          <label for="atorCoadjuvanteId">Ator Coadjuvante:</label>
+
+        <div class="form-group">
+          <label for="atorCoadjuvanteId">Ator Coadjuvante</label>
           <select id="atorCoadjuvanteId" name="atorCoadjuvanteId" required>
             <option value="">Selecione um ator</option>
             <c:forEach items="${atores}" var="ator">
@@ -56,20 +56,20 @@
             </c:forEach>
           </select>
         </div>
-        
-        <div>
-          <label for="dataLancamento">Data de Lançamento:</label>
-          <input type="date" id="dataLancamento" name="dataLancamento" 
-                 value="<fmt:formatDate value='${dvd.dataLancamento}' pattern='yyyy-MM-dd'/>" required/>
+
+        <div class="form-group">
+          <label for="dataLancamento">Data de Lançamento</label>
+          <input type="date" id="dataLancamento" name="dataLancamento"
+            value="<fmt:formatDate value='${dvd.dataLancamento}' pattern='yyyy-MM-dd'/>" required />
         </div>
-        
-        <div>
-          <label for="duracaoMinutos">Duração (minutos):</label>
+
+        <div class="form-group">
+          <label for="duracaoMinutos">Duração (minutos)</label>
           <input type="number" id="duracaoMinutos" name="duracaoMinutos" value="${dvd.duracaoMinutos}" required min="1"/>
         </div>
-        
-        <div>
-          <label for="classificacaoEtariaId">Classificação Etária:</label>
+
+        <div class="form-group">
+          <label for="classificacaoEtariaId">Classificação Etária</label>
           <select id="classificacaoEtariaId" name="classificacaoEtariaId" required>
             <option value="">Selecione uma classificação</option>
             <c:forEach items="${classificacoesEtarias}" var="classificacao">
@@ -79,9 +79,9 @@
             </c:forEach>
           </select>
         </div>
-        
-        <div>
-          <label for="generoId">Gênero:</label>
+
+        <div class="form-group">
+          <label for="generoId">Gênero</label>
           <select id="generoId" name="generoId" required>
             <option value="">Selecione um gênero</option>
             <c:forEach items="${generos}" var="genero">
@@ -91,12 +91,10 @@
             </c:forEach>
           </select>
         </div>
-        
-        <div>
-          <button type="submit">Alterar</button>
-          <a href="${cp}/processaDvd?acao=listar">
-            Cancelar
-          </a>
+
+        <div class="form-actions">
+          <button type="submit" class="btn"><i class="bi bi-save"></i> Salvar</button>
+          <a href="${cp}/processaDvd?acao=listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Cancelar</a>
         </div>
       </form>
     </div>

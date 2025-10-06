@@ -18,12 +18,12 @@
 
     <h1>Excluir Ator</h1>
 
-    <div>
-      <h3>⚠️ Confirmação de Exclusão</h3>
+  <div class="content-wrapper narrow">
+    <h3><i class="bi bi-exclamation-triangle-fill text-warning"></i> Confirmação de Exclusão</h3>
       <p>Tem certeza que deseja excluir o seguinte ator?</p>
-      
+
       <div>
-        <table>
+        <table class="table-auto">
           <tr>
             <td><strong>Id:</strong></td>
             <td>${ator.id}</td>
@@ -44,21 +44,17 @@
           </tr>
         </table>
       </div>
-      
-      <p><strong>⚠️ Esta ação não pode ser desfeita!</strong></p>
-      
-      <div>
-        <form method="post" action="${cp}/processaAtor" style="display: inline;">
+
+      <p><strong class="text-danger">Esta ação não pode ser desfeita!</strong></p>
+
+      <div class="form-actions">
+        <form method="post" action="${cp}/processaAtor" style="display:inline;">
           <input type="hidden" name="acao" value="excluir"/>
           <input type="hidden" name="id" value="${ator.id}"/>
-          <button type="submit">
-            Confirmar Exclusão
-          </button>
+          <button type="submit" class="btn btn-danger icon-only" title="Confirmar Exclusão" aria-label="Confirmar Exclusão"><i
+              class="bi bi-trash"></i></button>
         </form>
-        
-        <a href="${cp}/processaAtor?acao=listar">
-          Cancelar
-        </a>
+        <a href="${cp}/processaAtor?acao=listar" class="btn"><i class="bi bi-x-lg"></i> Cancelar</a>
       </div>
     </div>
 

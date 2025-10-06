@@ -17,38 +17,36 @@
 
     <h1>Excluir Classificação Etária</h1>
 
-    <div>
+  <div class="content-wrapper narrow">
       <h3>⚠️ Confirmação de Exclusão</h3>
-      <p>Tem certeza que deseja excluir a seguinte classificação etária?</p>
-      
-      <div>
+      <p>Tem certeza que deseja excluir a classificação <strong>"${classificacaoEtaria.descricao}"</strong> (ID:
+        ${classificacaoEtaria.id})?</p>
+
+      <div class="table-auto">
         <table>
-          <tr>
-            <td><strong>Id:</strong></td>
-            <td>${classificacaoEtaria.id}</td>
-          </tr>
-          <tr>
-            <td><strong>Descrição:</strong></td>
-            <td>${classificacaoEtaria.descricao}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Id</th>
+              <td>${classificacaoEtaria.id}</td>
+            </tr>
+            <tr>
+              <th>Descrição</th>
+              <td>${classificacaoEtaria.descricao}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      
+
       <p><strong>⚠️ Esta ação não pode ser desfeita!</strong></p>
-      
-      <div>
-        <form method="post" action="${cp}/processaClassificacaoEtaria" style="display: inline;">
-          <input type="hidden" name="acao" value="excluir"/>
-          <input type="hidden" name="id" value="${classificacaoEtaria.id}"/>
-          <button type="submit">
-            Confirmar Exclusão
-          </button>
-        </form>
-        
-        <a href="${cp}/processaClassificacaoEtaria?acao=listar">
-          Cancelar
-        </a>
-      </div>
+
+      <form method="post" action="${cp}/processaClassificacaoEtaria" class="form-actions">
+        <input type="hidden" name="acao" value="excluir" />
+        <input type="hidden" name="id" value="${classificacaoEtaria.id}" />
+  <button type="submit" class="btn btn-danger icon-only" title="Confirmar Exclusão" aria-label="Confirmar Exclusão"><i
+      class="bi bi-trash"></i></button>
+  <a href="${cp}/processaClassificacaoEtaria?acao=listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i>
+    Cancelar</a>
+  </form>
     </div>
 
   </body>

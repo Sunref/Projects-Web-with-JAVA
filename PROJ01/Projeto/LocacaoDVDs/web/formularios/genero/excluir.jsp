@@ -17,38 +17,34 @@
 
     <h1>Excluir Gênero</h1>
 
-    <div>
+  <div class="content-wrapper narrow">
       <h3>⚠️ Confirmação de Exclusão</h3>
-      <p>Tem certeza que deseja excluir o seguinte gênero?</p>
-      
-      <div>
+      <p>Tem certeza que deseja excluir o gênero <strong>"${genero.descricao}"</strong> (ID: ${genero.id})?</p>
+
+      <div class="table-auto">
         <table>
-          <tr>
-            <td><strong>Id:</strong></td>
-            <td>${genero.id}</td>
-          </tr>
-          <tr>
-            <td><strong>Descrição:</strong></td>
-            <td>${genero.descricao}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Id</th>
+              <td>${genero.id}</td>
+            </tr>
+            <tr>
+              <th>Descrição</th>
+              <td>${genero.descricao}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
-      
+
       <p><strong>⚠️ Esta ação não pode ser desfeita!</strong></p>
-      
-      <div>
-        <form method="post" action="${cp}/processaGenero" style="display: inline;">
-          <input type="hidden" name="acao" value="excluir"/>
-          <input type="hidden" name="id" value="${genero.id}"/>
-          <button type="submit">
-            Confirmar Exclusão
-          </button>
-        </form>
-        
-        <a href="${cp}/processaGenero?acao=listar">
-          Cancelar
-        </a>
-      </div>
+
+      <form method="post" action="${cp}/processaGenero" class="form-actions">
+        <input type="hidden" name="acao" value="excluir" />
+        <input type="hidden" name="id" value="${genero.id}" />
+  <button type="submit" class="btn btn-danger icon-only" title="Confirmar Exclusão" aria-label="Confirmar Exclusão"><i
+      class="bi bi-trash"></i></button>
+  <a href="${cp}/processaGenero?acao=listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Cancelar</a>
+  </form>
     </div>
 
   </body>

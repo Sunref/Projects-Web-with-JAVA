@@ -20,59 +20,41 @@
 
     <div>
       <h3>⚠️ Confirmação de Exclusão</h3>
-      <p>Tem certeza que deseja excluir o seguinte DVD?</p>
+      <p>Tem certeza que deseja excluir o DVD <strong>"${dvd.titulo}"</strong> (ID: ${dvd.id})?</p>
       
-      <div>
-        <table>
-          <tr>
-            <td><strong>Id:</strong></td>
-            <td>${dvd.id}</td>
-          </tr>
-          <tr>
-            <td><strong>Título:</strong></td>
-            <td>${dvd.titulo}</td>
-          </tr>
-          <tr>
-            <td><strong>Ano de Lançamento:</strong></td>
-            <td>${dvd.anoLancamento}</td>
-          </tr>
-          <tr>
-            <td><strong>Ator Principal:</strong></td>
-            <td>${dvd.atorPrincipal.nome} ${dvd.atorPrincipal.sobrenome}</td>
-          </tr>
-          <tr>
-            <td><strong>Ator Coadjuvante:</strong></td>
-            <td>${dvd.atorCoadjuvante.nome} ${dvd.atorCoadjuvante.sobrenome}</td>
-          </tr>
-          <tr>
-            <td><strong>Gênero:</strong></td>
-            <td>${dvd.genero.descricao}</td>
-          </tr>
-          <tr>
-            <td><strong>Classificação Etária:</strong></td>
-            <td>${dvd.classificacaoEtaria.descricao}</td>
-          </tr>
-          <tr>
-            <td><strong>Duração:</strong></td>
-            <td>${dvd.duracaoMinutos} minutos</td>
-          </tr>
-        </table>
-      </div>
+  <div class="content-wrapper narrow">
+    <div class="table-auto">
+      <table>
+            <tbody>
+              <tr>
+                <th>Título</th>
+                <td>${dvd.titulo}</td>
+              </tr>
+              <tr>
+                <th>Ano</th>
+                <td>${dvd.anoLancamento}</td>
+              </tr>
+              <tr>
+                <th>Gênero</th>
+                <td>${dvd.genero.descricao}</td>
+              </tr>
+              <tr>
+                <th>Classificação</th>
+                <td>${dvd.classificacaoEtaria.descricao}</td>
+              </tr>
+            </tbody>
+            </table>
+            </div>
       
-      <p><strong>⚠️ Esta ação não pode ser desfeita!</strong></p>
+        <p><strong>⚠️ Esta ação não pode ser desfeita!</strong></p>
       
-      <div>
-        <form method="post" action="${cp}/processaDvd" style="display: inline;">
+        <form method="post" action="${cp}/processaDvd" class="form-actions">
           <input type="hidden" name="acao" value="excluir"/>
           <input type="hidden" name="id" value="${dvd.id}"/>
-          <button type="submit">
-            Confirmar Exclusão
-          </button>
+          <button type="submit" class="btn btn-danger icon-only" title="Confirmar Exclusão" aria-label="Confirmar Exclusão"><i
+              class="bi bi-trash"></i></button>
+          <a href="${cp}/processaDvd?acao=listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Cancelar</a>
         </form>
-        
-        <a href="${cp}/processaDvd?acao=listar">
-          Cancelar
-        </a>
       </div>
     </div>
 

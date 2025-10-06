@@ -20,7 +20,8 @@
 
     <div class="content-wrapper">
       <div class="header-action">
-        <a href="${cp}/processaDvd?acao=prepararNovo" class="btn">Novo DVD</a>
+        <a href="${cp}/processaDvd?acao=prepararNovo" class="btn btn-primary icon-only" title="Novo DVD"
+          aria-label="Novo DVD"><i class="bi bi-person-plus"></i></a>
       </div>
 
       <table class="tabelaListagem">
@@ -55,8 +56,10 @@
             <td>${dvd.classificacaoEtaria.descricao}</td>
             <td>${dvd.duracaoMinutos}</td>
             <td class="table-actions">
-              <a href="${cp}/processaDvd?acao=prepararAlteracao&id=${dvd.id}">Alterar</a>
-              <a href="${cp}/processaDvd?acao=prepararExclusao&id=${dvd.id}" class="delete">Excluir</a>
+              <a href="${cp}/processaDvd?acao=prepararAlteracao&id=${dvd.id}" class="icon-only" title="Alterar ${dvd.titulo}"
+                aria-label="Alterar ${dvd.titulo}"><i class="bi bi-pencil"></i></a>
+              <a href="${cp}/processaDvd?acao=prepararExclusao&id=${dvd.id}" class="delete icon-only" title="Excluir ${dvd.titulo}"
+                aria-label="Excluir ${dvd.titulo}"><i class="bi bi-trash"></i></a>
             </td>
           </tr>
         </c:forEach>
@@ -71,3 +74,4 @@
   </body>
 
 </html>
+<script src="style/table-utils.js"></script>

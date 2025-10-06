@@ -18,32 +18,30 @@
 
     <h1>Alterar Ator</h1>
 
-    <div>
-      <form method="post" action="${cp}/processaAtor">
+  <div class="content-wrapper narrow">
+    <form method="post" action="${cp}/processaAtor" class="form">
         <input type="hidden" name="acao" value="alterar"/>
         <input type="hidden" name="id" value="${ator.id}"/>
-        
-        <div>
-          <label for="nome">Nome:</label>
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" value="${ator.nome}" required/>
         </div>
-        
-        <div>
-          <label for="sobrenome">Sobrenome:</label>
+
+        <div class="form-group">
+          <label for="sobrenome">Sobrenome</label>
           <input type="text" id="sobrenome" name="sobrenome" value="${ator.sobrenome}" required/>
         </div>
-        
-        <div>
-          <label for="dataEstreia">Data de Estreia:</label>
-          <input type="date" id="dataEstreia" name="dataEstreia" 
-                 value="<fmt:formatDate value='${ator.dataEstreia}' pattern='yyyy-MM-dd'/>" required/>
+
+        <div class="form-group">
+          <label for="dataEstreia">Data de Estreia</label>
+          <input type="date" id="dataEstreia" name="dataEstreia"
+            value="<fmt:formatDate value='${ator.dataEstreia}' pattern='yyyy-MM-dd'/>" required />
         </div>
-        
-        <div>
-          <button type="submit">Alterar</button>
-          <a href="${cp}/processaAtor?acao=listar">
-            Cancelar
-          </a>
+
+        <div class="form-actions">
+          <button type="submit" class="btn"><i class="bi bi-save"></i> Salvar</button>
+          <a href="${cp}/processaAtor?acao=listar" class="btn btn-secondary"><i class="bi bi-x-lg"></i> Cancelar</a>
         </div>
       </form>
     </div>

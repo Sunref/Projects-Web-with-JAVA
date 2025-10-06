@@ -19,7 +19,8 @@
 
     <div class="content-wrapper">
       <div class="header-action">
-        <a href="${cp}/processaGenero?acao=prepararNovo" class="btn">Novo Gênero</a>
+  <a href="${cp}/processaGenero?acao=prepararNovo" class="btn btn-primary icon-only" title="Novo Gênero"
+    aria-label="Novo Gênero"><i class="bi bi-plus-lg"></i></a>
       </div>
 
       <table class="tabelaListagem">
@@ -42,8 +43,10 @@
             <td>${genero.id}</td>
             <td>${genero.descricao}</td>
             <td class="table-actions">
-              <a href="${cp}/processaGenero?acao=prepararAlteracao&id=${genero.id}">Alterar</a>
-              <a href="${cp}/processaGenero?acao=prepararExclusao&id=${genero.id}" class="delete">Excluir</a>
+            <a href="${cp}/processaGenero?acao=prepararAlteracao&id=${genero.id}" class="icon-only"
+              title="Alterar ${genero.descricao}" aria-label="Alterar ${genero.descricao}"><i class="bi bi-pencil"></i></a>
+            <a href="${cp}/processaGenero?acao=prepararExclusao&id=${genero.id}" class="delete icon-only"
+              title="Excluir ${genero.descricao}" aria-label="Excluir ${genero.descricao}"><i class="bi bi-trash"></i></a>
             </td>
           </tr>
         </c:forEach>
@@ -54,6 +57,7 @@
     </div>
 
     <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
+  <script src="style/table-utils.js"></script>
 
   </body>
 

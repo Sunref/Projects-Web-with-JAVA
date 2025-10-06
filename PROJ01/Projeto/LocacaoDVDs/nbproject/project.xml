@@ -7,11 +7,16 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${libs.MariaDB-ConnectorJ-3.5.0.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
+                    <file>${${web.docbase.dir}/WEB-INF/lib/mariadb-java-client-3.5.5.jar}</file>
                 </library>
                 <library dirs="200">
-                    <file>${libs.mariadb-java-client-3.5.5.classpath}</file>
+                    <file>${${web.docbase.dir}/WEB-INF/lib/jakarta.servlet-api-6.0.0.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${${web.docbase.dir}/WEB-INF/lib/jakarta.servlet.jsp-api-3.1.1.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${libs.MariaDB.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

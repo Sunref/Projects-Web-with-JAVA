@@ -17,38 +17,27 @@
 
     <h1>Alterar Gênero</h1>
 
-    <form method="post" action="${cp}/processaGenero">
+  <div class="content-wrapper narrow">
+    <form method="post" action="${cp}/processaGenero" class="form">
+      <input name="acao" type="hidden" value="alterar" />
+      <input name="id" type="hidden" value="${genero.id}" />
 
-      <input name="acao" type="hidden" value="alterar"/>
-      <input name="id" type="hidden" value="${genero.id}"/>
+        <div class="form-group">
+          <label>Id</label>
+          <div class="form-static">${genero.id}</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <input id="descricao" name="descricao" type="text" maxlength="40" value="${genero.descricao}" required />
+        </div>
 
-      <table>
-        <tr>
-          <td class="alinharDireita">Id:</td>
-          <td>${genero.id}</td>
-        </tr>
-        <tr>
-          <td class="alinharDireita">Descrição:</td>
-          <td>
-            <input name="descricao" 
-                   type="text" 
-                   size="40"
-                   maxlength="40"
-                   value="${genero.descricao}"
-                   required/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="${cp}/processaGenero?acao=listar">Voltar</a>
-          </td>
-          <td class="alinharDireita">
-            <input type="submit" value="Alterar"/>
-          </td>
-        </tr>
-      </table>
-
-    </form>
+        <div class="form-actions">
+          <a href="${cp}/processaGenero?acao=listar" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Voltar</a>
+          <button type="submit" class="btn"><i class="bi bi-save"></i> Salvar</button>
+        </div>
+      </form>
+    </div>
 
   </body>
 

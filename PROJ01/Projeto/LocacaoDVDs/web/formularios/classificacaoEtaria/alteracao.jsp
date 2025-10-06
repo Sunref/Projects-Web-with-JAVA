@@ -17,22 +17,21 @@
 
     <h1>Alterar Classificação Etária</h1>
 
-    <div>
-      <form method="post" action="${cp}/processaClassificacaoEtaria">
+  <div class="content-wrapper narrow">
+    <form method="post" action="${cp}/processaClassificacaoEtaria" class="form">
         <input type="hidden" name="acao" value="alterar"/>
         <input type="hidden" name="id" value="${classificacaoEtaria.id}"/>
-        
-        <div>
-          <label for="descricao">Descrição:</label>
-          <input type="text" id="descricao" name="descricao" value="${classificacaoEtaria.descricao}" required 
-                 placeholder="Ex: Livre, 10 anos, 12 anos, 14 anos, 16 anos, 18 anos"/>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" name="descricao" value="${classificacaoEtaria.descricao}" required
+            placeholder="Ex: Livre, 10 anos, 12 anos..." />
         </div>
-        
-        <div>
-          <button type="submit">Alterar</button>
-          <a href="${cp}/processaClassificacaoEtaria?acao=listar">
-            Cancelar
-          </a>
+
+        <div class="form-actions">
+          <a href="${cp}/processaClassificacaoEtaria?acao=listar" class="btn btn-secondary"><i class="bi bi-arrow-left"></i>
+            Voltar</a>
+          <button type="submit" class="btn"><i class="bi bi-save"></i> Salvar</button>
         </div>
       </form>
     </div>

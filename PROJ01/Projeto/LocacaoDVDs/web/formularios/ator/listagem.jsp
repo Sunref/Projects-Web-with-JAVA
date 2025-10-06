@@ -20,7 +20,8 @@
 
     <div class="content-wrapper">
         <div class="header-action">
-            <a href="${cp}/processaAtor?acao=prepararNovo" class="btn">Novo Ator</a>
+            <a href="${cp}/processaAtor?acao=prepararNovo" class="btn btn-primary icon-only" title="Novo Ator"
+                aria-label="Novo Ator"><i class="bi bi-person-plus"></i></a>
         </div>
 
         <table class="tabelaListagem">
@@ -49,12 +50,12 @@
                             <fmt:formatDate value="${ator.dataEstreia}" pattern="dd/MM/yyyy"/>
                         </td>
                         <td class="table-actions">
-                            <a href="${cp}/processaAtor?acao=prepararAlteracao&id=${ator.id}">
-                                Alterar
-                            </a>
-                            <a href="${cp}/processaAtor?acao=prepararExclusao&id=${ator.id}">
-                                Excluir
-                            </a>
+                            <a href="${cp}/processaAtor?acao=prepararAlteracao&id=${ator.id}" class="icon-only"
+                                title="Alterar ${ator.nome} ${ator.sobrenome}" aria-label="Alterar ${ator.nome} ${ator.sobrenome}"><i
+                                    class="bi bi-pencil"></i></a>
+                            <a href="${cp}/processaAtor?acao=prepararExclusao&id=${ator.id}" class="delete icon-only"
+                                title="Excluir ${ator.nome} ${ator.sobrenome}" aria-label="Excluir ${ator.nome} ${ator.sobrenome}"><i
+                                    class="bi bi-trash"></i></a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -68,3 +69,4 @@
   </body>
 
 </html>
+<script src="style/table-utils.js"></script>

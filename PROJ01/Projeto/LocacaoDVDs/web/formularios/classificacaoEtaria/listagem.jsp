@@ -20,7 +20,8 @@
 
     <div class="content-wrapper">
       <div class="header-action">
-        <a href="${cp}/processaClassificacaoEtaria?acao=prepararNovo" class="btn">Nova Classificação Etária</a>
+  <a href="${cp}/processaClassificacaoEtaria?acao=prepararNovo" class="btn btn-primary icon-only"
+    title="Nova Classificação Etária" aria-label="Nova Classificação Etária"><i class="bi bi-plus-lg"></i></a>
       </div>
 
       <table class="tabelaListagem">
@@ -43,8 +44,12 @@
             <td>${classificacao.id}</td>
             <td>${classificacao.descricao}</td>
             <td class="table-actions">
-              <a href="${cp}/processaClassificacaoEtaria?acao=prepararAlteracao&id=${classificacao.id}">Alterar</a>
-              <a href="${cp}/processaClassificacaoEtaria?acao=prepararExclusao&id=${classificacao.id}" class="delete">Excluir</a>
+            <a href="${cp}/processaClassificacaoEtaria?acao=prepararAlteracao&id=${classificacao.id}" class="icon-only"
+              title="Alterar ${classificacao.descricao}" aria-label="Alterar ${classificacao.descricao}"><i
+                class="bi bi-pencil"></i></a>
+            <a href="${cp}/processaClassificacaoEtaria?acao=prepararExclusao&id=${classificacao.id}" class="delete icon-only"
+              title="Excluir ${classificacao.descricao}" aria-label="Excluir ${classificacao.descricao}"><i
+                class="bi bi-trash"></i></a>
             </td>
           </tr>
         </c:forEach>
@@ -55,6 +60,7 @@
     </div>
 
     <a href="${cp}/index.jsp" class="back-link">Tela Principal</a>
+    <script src="style/table-utils.js"></script>
 
   </body>
 
