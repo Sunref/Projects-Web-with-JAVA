@@ -27,6 +27,10 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+
+html, body { overflow-x: scroll; }
+
+*, *::before, *::after { box-sizing: border-box; }
 h1 {
   font-size: 2rem;
   font-weight: 600;
@@ -35,15 +39,15 @@ h1 {
 }
 .content-wrapper {
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   background-color: var(--container-background);
   padding: 1.5rem 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   margin-bottom: 2rem;
+  overflow-x: auto; /* allow horizontal scroll inside the card */
 }
 
-/* Utility-like helpers inspired by Tailwind (lightweight) */
 .flex {
   display: flex;
 }
@@ -106,6 +110,7 @@ a:hover {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2rem;
+  min-width: 900px; /* ensure table keeps readable column widths; will scroll inside content-wrapper */
 }
 .tabelaListagem th,
 .tabelaListagem td {
@@ -113,6 +118,8 @@ a:hover {
   text-align: left;
   border-bottom: 1px solid var(--border-color);
   vertical-align: middle;
+  white-space: normal;
+  word-break: break-word;
 }
 .tabelaListagem thead th {
   font-weight: 600;
@@ -130,7 +137,6 @@ a:hover {
   background-color: rgba(0, 122, 255, 0.04);
 }
 
-/* Make tables inside content-wrapper consistent (so other tables look like atores) */
 .content-wrapper table {
   width: 100%;
   border-collapse: separate;
@@ -148,7 +154,6 @@ a:hover {
   background-color: var(--container-background);
 }
 
-/* Action links in table styled as subtle buttons */
 .table-actions {
   display: flex;
   gap: 0.5rem;
@@ -181,6 +186,10 @@ a:hover {
   display: flex;
   gap: 1rem;
 }
+
+/* Fix actions column width so it doesn't cause table to overflow unexpectedly */
+.tabelaListagem thead th:last-child,
+.tabelaListagem tbody td:last-child { width: 140px; max-width: 180px; }
 form {
   display: flex;
   flex-direction: column;
@@ -316,6 +325,40 @@ button[type="submit"]::before {
 }
 .header-action {
   margin-bottom: 1rem;
+}
+
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+.text-center { text-align: center; }
+.font-medium { font-weight: 500; }
+
+.btn-primary {
+  background-color: #007aff;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-primary:hover { background-color: #005ecb; }
+
+.table-auto { width: 100%; border-collapse: collapse; }
+.table-auto th, .table-auto td { padding: 0.75rem 1rem; border-bottom: 1px solid #e6e6e9; }
+
+.badge { display:inline-block; padding:0.15rem 0.5rem; border-radius:999px; font-size:0.75rem; }
+.badge-muted { background:#f2f2f5; color:#444; }
+
+@media (max-width: 640px) {
+  .content-wrapper { padding: 1rem; }
+  .tabelaListagem th, .tabelaListagem td { padding: 0.65rem; }
 }
 
 /* Make header button more prominent like the screenshot */
