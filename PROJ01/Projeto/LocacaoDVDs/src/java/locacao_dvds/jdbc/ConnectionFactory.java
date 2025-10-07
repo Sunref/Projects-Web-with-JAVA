@@ -1,4 +1,4 @@
-package cadastroclientes.jdbc;
+package locacao_dvds.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

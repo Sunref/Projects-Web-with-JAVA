@@ -39,7 +39,7 @@
                 <jsp:useBean 
                     id="servicos" 
                     scope="page" 
-                    class="cadastroclientes.servicos.AtorServices"/>
+                    class="locacao_dvds.servicos.AtorServices"/>
 
                 <c:forEach items="${atores}" var="ator">
                     <tr>

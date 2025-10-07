@@ -1,6 +1,6 @@
-package cadastroclientes.dao;
+package locacao_dvds.dao;
 
-import cadastroclientes.entidades.ClassificacaoEtaria;
+import locacao_dvds.entidades.Genero;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,23 +9,23 @@ import java.util.List;
 
 /**
  * 
- * DAO para a entidade ClassificacaoEtaria.
+ * DAO para a entidade Genero.
  *
  * @author Fernanda M. bv3032345
  * 
  */
-public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements AutoCloseable{
+public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
 
-    public ClassificacaoEtariaDAO() throws SQLException {
+    public GeneroDAO() throws SQLException {
     }
 
     @Override
-    public void salvar( ClassificacaoEtaria obj ) throws SQLException {
+    public void salvar( Genero obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
                 INSERT INTO  
-                classificacao_etaria( 
+                genero( 
                     descricao )  
                 VALUES( ? );
                 """ );
@@ -38,11 +38,11 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
     }
 
     @Override
-    public void atualizar( ClassificacaoEtaria obj ) throws SQLException {
+    public void atualizar( Genero obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
-                UPDATE classificacao_etaria  
+                UPDATE genero  
                 SET 
                     descricao = ?  
                 WHERE 
@@ -58,11 +58,11 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
     }
 
     @Override
-    public void excluir( ClassificacaoEtaria obj ) throws SQLException {
+    public void excluir( Genero obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
-                DELETE FROM classificacao_etaria  
+                DELETE FROM genero  
                 WHERE 
                     id = ?;
                 """ );
@@ -75,9 +75,9 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
     }
 
     @Override
-    public List<ClassificacaoEtaria> listarTodos() throws SQLException {
+    public List<Genero> listarTodos() throws SQLException {
 
-        List<ClassificacaoEtaria> lista = new ArrayList<>();
+        List<Genero> lista = new ArrayList<>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
@@ -85,7 +85,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
                     id,  
                     descricao  
                 FROM 
-                    classificacao_etaria  
+                    genero  
                 ORDER BY descricao;
                 """ );
 
@@ -93,12 +93,12 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
 
         while ( rs.next() ) {
 
-            ClassificacaoEtaria ce = new ClassificacaoEtaria();
+            Genero g = new Genero();
 
-            ce.setId( rs.getInt( "id" ) );
-            ce.setDescricao( rs.getString( "descricao" ) );
+            g.setId( rs.getInt( "id" ) );
+            g.setDescricao( rs.getString( "descricao" ) );
 
-            lista.add( ce );
+            lista.add( g );
 
         }
 
@@ -110,9 +110,9 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
     }
 
     @Override
-    public ClassificacaoEtaria obterPorId( int id ) throws SQLException {
+    public Genero obterPorId( int id ) throws SQLException {
 
-        ClassificacaoEtaria classificacaoEtaria = null;
+        Genero genero = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
@@ -120,7 +120,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
                     id, 
                     descricao 
                 FROM
-                    classificacao_etaria 
+                    genero 
                 WHERE
                     id = ?;
                 """ );
@@ -131,17 +131,17 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements 
 
         if ( rs.next() ) {
 
-            classificacaoEtaria = new ClassificacaoEtaria();
+            genero = new Genero();
 
-            classificacaoEtaria.setId( rs.getInt( "id" ) );
-            classificacaoEtaria.setDescricao( rs.getString( "descricao" ) );
+            genero.setId( rs.getInt( "id" ) );
+            genero.setDescricao( rs.getString( "descricao" ) );
 
         }
 
         rs.close();
         stmt.close();
 
-        return classificacaoEtaria;
+        return genero;
 
     }
     

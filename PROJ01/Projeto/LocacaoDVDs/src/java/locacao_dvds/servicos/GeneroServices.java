@@ -1,7 +1,7 @@
-package cadastroclientes.servicos;
+package locacao_dvds.servicos;
 
-import cadastroclientes.dao.AtorDAO;
-import cadastroclientes.entidades.Ator;
+import locacao_dvds.dao.GeneroDAO;
+import locacao_dvds.entidades.Genero;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,20 +9,19 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
  * 
- * Servlet para prover os serviços relacionados à entidade Ator.
+ * Servlet para prover os serviços relacionados à entidade Genero.
  *
  * @author Fernanda M. bv3032345
  * 
  */
-@WebServlet( name = "AtorServices", 
-             urlPatterns = { "/processaAtor" } )
-public class AtorServices extends HttpServlet {
+@WebServlet( name = "GeneroServices", 
+             urlPatterns = { "/processaGenero" } )
+public class GeneroServices extends HttpServlet {
 
     protected void processRequest( 
             HttpServletRequest request, 
@@ -32,90 +31,82 @@ public class AtorServices extends HttpServlet {
         String acao = request.getParameter( "acao" );
         RequestDispatcher disp = null;
 
-        try ( AtorDAO dao = new AtorDAO() ) {
+        try ( GeneroDAO dao = new GeneroDAO() ) {
 
             if ( acao != null && acao.equals( "listar" ) ) {
 
-                List<Ator> atores = dao.listarTodos();
-                request.setAttribute( "atores", atores );
+                List<Genero> generos = dao.listarTodos();
+                request.setAttribute( "generos", generos );
                 disp = request.getRequestDispatcher( 
-                        "/formularios/ator/listagem.jsp" );
+                        "/formularios/genero/listagem.jsp" );
 
             } else if ( acao != null && acao.equals( "prepararNovo" ) ) {
 
                 disp = request.getRequestDispatcher( 
-                        "/formularios/ator/novo.jsp" );
+                        "/formularios/genero/novo.jsp" );
 
             } else if ( acao != null && acao.equals( "prepararAlteracao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
-                Ator ator = dao.obterPorId( id );
-                request.setAttribute( "ator", ator );
+                Genero genero = dao.obterPorId( id );
+                request.setAttribute( "genero", genero );
                 disp = request.getRequestDispatcher( 
-                        "/formularios/ator/alteracao.jsp" );
+                        "/formularios/genero/alteracao.jsp" );
 
             } else if ( acao != null && acao.equals( "prepararExclusao" ) ) {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
-                Ator ator = dao.obterPorId( id );
-                request.setAttribute( "ator", ator );
+                Genero genero = dao.obterPorId( id );
+                request.setAttribute( "genero", genero );
                 disp = request.getRequestDispatcher( 
-                        "/formularios/ator/excluir.jsp" );
+                        "/formularios/genero/excluir.jsp" );
 
             } else if ( acao != null && acao.equals( "novo" ) ) {
 
-                String nome = request.getParameter( "nome" );
-                String sobrenome = request.getParameter( "sobrenome" );
-                String dataEstreia = request.getParameter( "dataEstreia" );
+                String descricao = request.getParameter( "descricao" );
 
-                Ator a = new Ator();
-                a.setNome( nome );
-                a.setSobrenome( sobrenome );
-                a.setDataEstreia( Date.valueOf( dataEstreia ) );
+                Genero g = new Genero();
+                g.setDescricao( descricao );
 
-                dao.salvar( a );
+                dao.salvar( g );
                 disp = request.getRequestDispatcher( 
-                        "/processaAtor?acao=listar" );
+                        "/processaGenero?acao=listar" );
 
             } else if ( acao != null && acao.equals( "alterar" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
-                String nome = request.getParameter( "nome" );
-                String sobrenome = request.getParameter( "sobrenome" );
-                String dataEstreia = request.getParameter( "dataEstreia" );
+                String descricao = request.getParameter( "descricao" );
 
-                Ator a = new Ator();
-                a.setId( id );
-                a.setNome( nome );
-                a.setSobrenome( sobrenome );
-                a.setDataEstreia( Date.valueOf( dataEstreia ) );
+                Genero g = new Genero();
+                g.setId( id );
+                g.setDescricao( descricao );
 
-                dao.atualizar( a );
+                dao.atualizar( g );
                 disp = request.getRequestDispatcher( 
-                        "/processaAtor?acao=listar" );
+                        "/processaGenero?acao=listar" );
 
             } else if ( acao != null && acao.equals( "excluir" ) ) {
 
                 int id = Integer.parseInt( request.getParameter( "id" ) );
-                Ator a = new Ator();
-                a.setId( id );
+                Genero g = new Genero();
+                g.setId( id );
 
-                dao.excluir( a );
+                dao.excluir( g );
                 disp = request.getRequestDispatcher( 
-                        "/processaAtor?acao=listar" );
+                        "/processaGenero?acao=listar" );
 
             } else {
                 // Ação inválida ou nula - redireciona para listagem
-                List<Ator> atores = dao.listarTodos();
-                request.setAttribute( "atores", atores );
+                List<Genero> generos = dao.listarTodos();
+                request.setAttribute( "generos", generos );
                 disp = request.getRequestDispatcher( 
-                        "/formularios/ator/listagem.jsp" );
+                        "/formularios/genero/listagem.jsp" );
             }
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
             // Em caso de erro de SQL, redireciona para página de erro ou listagem
-            disp = request.getRequestDispatcher( "/formularios/ator/listagem.jsp" );
+            disp = request.getRequestDispatcher( "/formularios/genero/listagem.jsp" );
         }
 
         if ( disp != null ) {
@@ -142,7 +133,7 @@ public class AtorServices extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "AtorServices";
+        return "GeneroServices";
     }
 
 }

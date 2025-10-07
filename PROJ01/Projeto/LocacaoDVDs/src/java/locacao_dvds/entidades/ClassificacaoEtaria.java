@@ -1,4 +1,4 @@
-package cadastroclientes.entidades;
+package locacao_dvds.entidades;
 
 /**
  * 

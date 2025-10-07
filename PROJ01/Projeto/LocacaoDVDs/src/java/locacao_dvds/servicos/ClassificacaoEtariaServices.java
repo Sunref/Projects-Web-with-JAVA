@@ -1,7 +1,7 @@
-package cadastroclientes.servicos;
+package locacao_dvds.servicos;
 
-import cadastroclientes.dao.ClassificacaoEtariaDAO;
-import cadastroclientes.entidades.ClassificacaoEtaria;
+import locacao_dvds.dao.ClassificacaoEtariaDAO;
+import locacao_dvds.entidades.ClassificacaoEtaria;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

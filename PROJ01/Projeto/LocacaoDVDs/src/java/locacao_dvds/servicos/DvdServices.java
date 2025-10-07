@@ -1,13 +1,13 @@
-package cadastroclientes.servicos;
+package locacao_dvds.servicos;
 
-import cadastroclientes.dao.AtorDAO;
-import cadastroclientes.dao.ClassificacaoEtariaDAO;
-import cadastroclientes.dao.DvdDAO;
-import cadastroclientes.dao.GeneroDAO;
-import cadastroclientes.entidades.Ator;
-import cadastroclientes.entidades.ClassificacaoEtaria;
-import cadastroclientes.entidades.Dvd;
-import cadastroclientes.entidades.Genero;
+import locacao_dvds.dao.AtorDAO;
+import locacao_dvds.dao.ClassificacaoEtariaDAO;
+import locacao_dvds.dao.DvdDAO;
+import locacao_dvds.dao.GeneroDAO;
+import locacao_dvds.entidades.Ator;
+import locacao_dvds.entidades.ClassificacaoEtaria;
+import locacao_dvds.entidades.Dvd;
+import locacao_dvds.entidades.Genero;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

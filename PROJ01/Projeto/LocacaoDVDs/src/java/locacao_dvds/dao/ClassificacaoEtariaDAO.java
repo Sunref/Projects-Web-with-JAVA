@@ -1,6 +1,6 @@
-package cadastroclientes.dao;
+package locacao_dvds.dao;
 
-import cadastroclientes.entidades.Genero;
+import locacao_dvds.entidades.ClassificacaoEtaria;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,23 +9,23 @@ import java.util.List;
 
 /**
  * 
- * DAO para a entidade Genero.
+ * DAO para a entidade ClassificacaoEtaria.
  *
  * @author Fernanda M. bv3032345
  * 
  */
-public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
+public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements AutoCloseable{
 
-    public GeneroDAO() throws SQLException {
+    public ClassificacaoEtariaDAO() throws SQLException {
     }
 
     @Override
-    public void salvar( Genero obj ) throws SQLException {
+    public void salvar( ClassificacaoEtaria obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
                 INSERT INTO  
-                genero( 
+                classificacao_etaria( 
                     descricao )  
                 VALUES( ? );
                 """ );
@@ -38,11 +38,11 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
     }
 
     @Override
-    public void atualizar( Genero obj ) throws SQLException {
+    public void atualizar( ClassificacaoEtaria obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
-                UPDATE genero  
+                UPDATE classificacao_etaria  
                 SET 
                     descricao = ?  
                 WHERE 
@@ -58,11 +58,11 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
     }
 
     @Override
-    public void excluir( Genero obj ) throws SQLException {
+    public void excluir( ClassificacaoEtaria obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
-                DELETE FROM genero  
+                DELETE FROM classificacao_etaria  
                 WHERE 
                     id = ?;
                 """ );
@@ -75,9 +75,9 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
     }
 
     @Override
-    public List<Genero> listarTodos() throws SQLException {
+    public List<ClassificacaoEtaria> listarTodos() throws SQLException {
 
-        List<Genero> lista = new ArrayList<>();
+        List<ClassificacaoEtaria> lista = new ArrayList<>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
@@ -85,7 +85,7 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
                     id,  
                     descricao  
                 FROM 
-                    genero  
+                    classificacao_etaria  
                 ORDER BY descricao;
                 """ );
 
@@ -93,12 +93,12 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
 
         while ( rs.next() ) {
 
-            Genero g = new Genero();
+            ClassificacaoEtaria ce = new ClassificacaoEtaria();
 
-            g.setId( rs.getInt( "id" ) );
-            g.setDescricao( rs.getString( "descricao" ) );
+            ce.setId( rs.getInt( "id" ) );
+            ce.setDescricao( rs.getString( "descricao" ) );
 
-            lista.add( g );
+            lista.add( ce );
 
         }
 
@@ -110,9 +110,9 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
     }
 
     @Override
-    public Genero obterPorId( int id ) throws SQLException {
+    public ClassificacaoEtaria obterPorId( int id ) throws SQLException {
 
-        Genero genero = null;
+        ClassificacaoEtaria classificacaoEtaria = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 """
@@ -120,7 +120,7 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
                     id, 
                     descricao 
                 FROM
-                    genero 
+                    classificacao_etaria 
                 WHERE
                     id = ?;
                 """ );
@@ -131,17 +131,17 @@ public class GeneroDAO extends DAO<Genero> implements AutoCloseable{
 
         if ( rs.next() ) {
 
-            genero = new Genero();
+            classificacaoEtaria = new ClassificacaoEtaria();
 
-            genero.setId( rs.getInt( "id" ) );
-            genero.setDescricao( rs.getString( "descricao" ) );
+            classificacaoEtaria.setId( rs.getInt( "id" ) );
+            classificacaoEtaria.setDescricao( rs.getString( "descricao" ) );
 
         }
 
         rs.close();
         stmt.close();
 
-        return genero;
+        return classificacaoEtaria;
 
     }
     

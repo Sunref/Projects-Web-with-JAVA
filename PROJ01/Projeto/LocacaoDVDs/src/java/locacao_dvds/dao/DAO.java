@@ -1,6 +1,6 @@
-package cadastroclientes.dao;
+package locacao_dvds.dao;
 
-import cadastroclientes.jdbc.ConnectionFactory;
+import locacao_dvds.jdbc.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;

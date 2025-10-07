@@ -1,9 +1,9 @@
-package cadastroclientes.dao;
+package locacao_dvds.dao;
 
-import cadastroclientes.entidades.Ator;
-import cadastroclientes.entidades.ClassificacaoEtaria;
-import cadastroclientes.entidades.Dvd;
-import cadastroclientes.entidades.Genero;
+import locacao_dvds.entidades.Ator;
+import locacao_dvds.entidades.ClassificacaoEtaria;
+import locacao_dvds.entidades.Dvd;
+import locacao_dvds.entidades.Genero;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -36,7 +36,7 @@
         <jsp:useBean 
             id="servicos" 
             scope="page" 
-            class="cadastroclientes.servicos.GeneroServices"/>
+            class="locacao_dvds.servicos.GeneroServices"/>
 
         <c:forEach items="${generos}" var="genero">
           <tr>
