@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do Filme (HTML)</title>
+  <link rel="stylesheet" href="../../style/main.css">
+  <style>
+    .movie-details { max-width: 600px; margin: 2rem auto; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+    .movie-details img { float: right; margin-left: 1rem; max-width: 200px; }
+  </style>
+</head>
+<body>
+  <div class="movie-details" id="movieDetails">Carregando informações do filme...</div>
+  <a href="http://localhost:8080/LocacaoDVDs/processaDvd?acao=listar" class="back-link">Voltar à listagem</a>
+  <script>
+    function getQueryParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+    var titulo = getQueryParam('titulo');
+    // Pede a chave da API ao usuário (não a deixamos exposta no código)
+    var apiKey = sessionStorage.getItem('omdb_api_key') || null;
+    if (!apiKey) {
+      apiKey = prompt('Por favor, insira sua OMDb API key (será guardada apenas na sessão atual):');
+      if (apiKey) sessionStorage.setItem('omdb_api_key', apiKey);
+    }
+    if (!titulo) {
+      document.getElementById('movieDetails').innerText = 'Título do filme não informado.';
+      console.log('detalhesFilme: título não informado');
+    } else {
+      if (!apiKey) {
+        alert('Nenhuma API key informada. A pesquisa não pode ser realizada.');
+        document.getElementById('movieDetails').innerText = 'API key não informada.';
+        console.log('detalhesFilme: sem apiKey, abortando.');
+        throw new Error('API key não informada');
+      }
+      var url = 'https://www.omdbapi.com/?t=' + encodeURIComponent(titulo) + '&apikey=' + apiKey + '&plot=full';
+      console.log('detalhesFilme: requisitando', url);
+      fetch(url)
+        .then(function(res){
+          console.log('detalhesFilme: status', res.status);
+          return res.json();
+        })
+        .then(function(data){
+          if (data && data.Response === 'True') {
+            console.log('detalhesFilme: API retornou dados válidos');
+            var html = '';
+            if (data.Poster && data.Poster !== 'N/A') html += '<img src="' + data.Poster + '" alt="Poster">';
+            html += '<h2>' + data.Title + ' (' + data.Year + ')</h2>';
+            html += '<p><strong>Diretor:</strong> ' + data.Director + '</p>';
+            html += '<p><strong>Atores:</strong> ' + data.Actors + '</p>';
+            html += '<p><strong>Gênero:</strong> ' + data.Genre + '</p>';
+            html += '<p><strong>Sinopse:</strong> ' + data.Plot + '</p>';
+            document.getElementById('movieDetails').innerHTML = html;
+          } else {
+            console.log('detalhesFilme: API não encontrou o filme', data);
+            document.getElementById('movieDetails').innerText = 'Filme não encontrado.';
+          }
+        })
+        .catch(function(err){
+          console.error('detalhesFilme: erro na requisição', err);
+          document.getElementById('movieDetails').innerText = 'Erro ao buscar informações do filme.';
+        });
+    }
+  </script>
+</body>
+</html>
