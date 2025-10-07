@@ -48,7 +48,12 @@
         <c:forEach items="${dvds}" var="dvd">
           <tr>
             <td>${dvd.id}</td>
-            <td>${dvd.titulo}</td>
+            <td>
+              <a href="${cp}/formularios/dvd/detalhesFilme.html?titulo=${dvd.titulo}" title="Ver detalhes de ${dvd.titulo}"
+                style="text-decoration:underline; color:blue; cursor:pointer;">
+                ${dvd.titulo}
+              </a>
+            </td>
             <td>${dvd.anoLancamento}</td>
             <td>${dvd.atorPrincipal.nome} ${dvd.atorPrincipal.sobrenome}</td>
             <td>${dvd.atorCoadjuvante.nome} ${dvd.atorCoadjuvante.sobrenome}</td>
