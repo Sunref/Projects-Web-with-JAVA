@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * DAO para a entidade Genero.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class GeneroDAO extends DAO<Genero> implements AutoCloseable{

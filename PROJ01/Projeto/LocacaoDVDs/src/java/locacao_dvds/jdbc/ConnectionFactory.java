@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * 
  * Uma fábrica de conexões.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class ConnectionFactory {
@@ -23,8 +23,8 @@ public class ConnectionFactory {
     public static Connection getConnection() throws SQLException {
         // URL JDBC do MariaDB
         String url = "jdbc:mariadb://localhost:3306/locacao_dvds";
-        String usuario = "root";
-        String senha = "";
+        String usuario = "fernanda";
+        String senha = "senha123";
 
         return DriverManager.getConnection(url, usuario, senha);
     }

@@ -4,7 +4,7 @@ package locacao_dvds.entidades;
  * 
  * Entidade ClassificacaoEtaria.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class ClassificacaoEtaria {

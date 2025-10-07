@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * DAO para a entidade Ator.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class AtorDAO extends DAO<Ator> implements AutoCloseable{
