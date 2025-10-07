@@ -74,7 +74,7 @@ a:hover { color: var(--primary-accent-hover); text-decoration: underline; }
 .nav-menu li a:hover { border-color: var(--primary-accent); background-color: #eef5ff; color: var(--primary-accent); }
 
 .tabelaListagem { width: 100%; border-collapse: collapse; margin-top: 2rem; min-width: 0; table-layout: auto; }
-.tabelaListagem th, .tabelaListagem td { padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border-color); vertical-align: middle; word-break: break-word; white-space: normal; }
+.tabelaListagem th, .tabelaListagem td { padding: 1rem 1.25rem; text-align: left; vertical-align: middle; white-space: normal; }
 .tabelaListagem td:nth-child(2), .tabelaListagem th:nth-child(2) { white-space: normal; }
 .tabelaListagem thead th { font-weight: 600; color: var(--subtle-text-color); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; background-color: #fafafa; position: relative; }
 .tabelaListagem tbody tr:last-child td { border-bottom: none; }
@@ -82,16 +82,16 @@ a:hover { color: var(--primary-accent-hover); text-decoration: underline; }
 
 .content-wrapper table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.25rem; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03); }
 .content-wrapper thead th { background-color: #fbfbfd; border-bottom: 1px solid var(--border-color); }
-.content-wrapper tbody tr td { background-color: var(--container-background); }
+/* removed background-color to allow table cells to inherit container background */
 
 .table-actions { display: flex; gap: 0.5rem; align-items: center; }
 .table-actions a { display: inline-block; padding: 0.35rem 0.6rem; border-radius: 6px; font-size: 0.9rem; text-decoration: none; color: var(--primary-accent); border: 1px solid transparent; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; }
 .table-actions a:hover { background-color: rgba(0, 122, 255, 0.06); color: var(--primary-accent-hover); border-color: rgba(0, 122, 255, 0.12); }
 .table-actions a.delete .bi { color: #e11d48; }
 .table-actions a.delete:hover { background-color: rgba(225, 29, 72, 0.04); }
-.table-actions { display: flex; gap: 1rem; }
+.table-actions { display: flex; gap: 1rem; white-space: nowrap; }
 
-.tabelaListagem thead th:last-child, .tabelaListagem tbody td:last-child { width: 140px; max-width: 180px; }
+.tabelaListagem thead th:last-child, .tabelaListagem tbody td:last-child { width: 180px; max-width: 240px; }
 
 .tabelaListagem td:nth-child(1), .tabelaListagem th:nth-child(1), .tabelaListagem td:nth-child(3), .tabelaListagem th:nth-child(3), .tabelaListagem td:nth-child(8), .tabelaListagem th:nth-child(8) { text-align: right; white-space: nowrap; }
 
