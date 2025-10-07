@@ -16,7 +16,7 @@ import java.util.List;
  * 
  * Servlet para prover os serviços relacionados à entidade ClassificacaoEtaria.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda , Gabriel M e Kevin D.
  * 
  */
 @WebServlet( name = "ClassificacaoEtariaServices", 
@@ -96,7 +96,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
                         "/processaClassificacaoEtaria?acao=listar" );
 
             } else {
-                // Ação inválida ou nula - redireciona para listagem
+                // Ação inválida
                 List<ClassificacaoEtaria> classificacoesEtarias = dao.listarTodos();
                 request.setAttribute( "classificacoesEtarias", classificacoesEtarias );
                 disp = request.getRequestDispatcher( 
@@ -105,7 +105,7 @@ public class ClassificacaoEtariaServices extends HttpServlet {
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
-            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            // Em caso de erro de SQL
             disp = request.getRequestDispatcher( "/formularios/classificacaoEtaria/listagem.jsp" );
         }
 

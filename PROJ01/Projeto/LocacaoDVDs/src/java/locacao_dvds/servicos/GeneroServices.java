@@ -16,7 +16,7 @@ import java.util.List;
  * 
  * Servlet para prover os serviços relacionados à entidade Genero.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 @WebServlet( name = "GeneroServices", 
@@ -96,7 +96,7 @@ public class GeneroServices extends HttpServlet {
                         "/processaGenero?acao=listar" );
 
             } else {
-                // Ação inválida ou nula - redireciona para listagem
+                // Ação inválida
                 List<Genero> generos = dao.listarTodos();
                 request.setAttribute( "generos", generos );
                 disp = request.getRequestDispatcher( 
@@ -105,7 +105,7 @@ public class GeneroServices extends HttpServlet {
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
-            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            // Em caso de erro de SQL
             disp = request.getRequestDispatcher( "/formularios/genero/listagem.jsp" );
         }
 

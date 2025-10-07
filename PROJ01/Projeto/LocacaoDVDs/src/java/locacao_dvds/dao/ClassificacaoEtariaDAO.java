@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * DAO para a entidade ClassificacaoEtaria.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria> implements AutoCloseable{

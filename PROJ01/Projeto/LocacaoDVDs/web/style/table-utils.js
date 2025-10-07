@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const tbody = table.tBodies[0];
     if (!tbody) return;
 
-    // populate data-label attributes on each TD from the corresponding TH text
     const headerTexts = Array.from(table.querySelectorAll("thead th")).map(
       (th) => th.textContent.trim()
     );
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // initial sort by first column (ID)
     const rows = Array.from(tbody.querySelectorAll("tr"));
     rows.sort(function (a, b) {
       const ai =
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
       tbody.appendChild(r);
     });
 
-    // clickable headers to sort by column
     const headers = table.querySelectorAll("thead th");
     headers.forEach(function (th, idx) {
       th.style.cursor = "pointer";
@@ -41,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const current =
           th.getAttribute("data-sort-dir") === "asc" ? "asc" : "desc";
         const dir = current === "asc" ? "desc" : "asc";
-        // reset other headers
         headers.forEach((h) => h.removeAttribute("data-sort-dir"));
         th.setAttribute("data-sort-dir", dir);
 

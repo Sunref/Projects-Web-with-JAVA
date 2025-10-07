@@ -47,7 +47,7 @@ h1 {
   box-shadow: var(--box-shadow);
   margin-bottom: 2rem;
   overflow-wrap: break-word;
-  overflow-x: auto; /* allow horizontal scroll when table is wider than container */
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 

@@ -14,7 +14,7 @@ import java.util.List;
  * 
  * DAO para a entidade Dvd.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class DvdDAO extends DAO<Dvd> implements AutoCloseable{

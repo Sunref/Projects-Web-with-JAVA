@@ -6,7 +6,7 @@ import java.sql.Date;
  * 
  * Entidade Dvd.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 public class Dvd {

@@ -17,7 +17,7 @@ import java.util.List;
  * 
  * Servlet para prover os serviços relacionados à entidade Ator.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 @WebServlet( name = "AtorServices", 
@@ -105,7 +105,7 @@ public class AtorServices extends HttpServlet {
                         "/processaAtor?acao=listar" );
 
             } else {
-                // Ação inválida ou nula - redireciona para listagem
+                // Ação inválida
                 List<Ator> atores = dao.listarTodos();
                 request.setAttribute( "atores", atores );
                 disp = request.getRequestDispatcher( 
@@ -114,7 +114,7 @@ public class AtorServices extends HttpServlet {
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
-            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            // Em caso de erro de SQL
             disp = request.getRequestDispatcher( "/formularios/ator/listagem.jsp" );
         }
 

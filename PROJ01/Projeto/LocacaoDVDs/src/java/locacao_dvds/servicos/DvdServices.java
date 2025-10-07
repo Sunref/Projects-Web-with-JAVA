@@ -23,7 +23,7 @@ import java.util.List;
  * 
  * Servlet para prover os serviços relacionados à entidade Dvd.
  *
- * @author Fernanda M. bv3032345
+ * @author Fernanda M, Gabriel M e Kevin D.
  * 
  */
 @WebServlet( name = "DvdServices", 
@@ -184,7 +184,7 @@ public class DvdServices extends HttpServlet {
                         "/processaDvd?acao=listar" );
 
             } else {
-                // Ação inválida ou nula - redireciona para listagem
+                // Ação inválida
                 List<Dvd> dvds = dao.listarTodos();
                 request.setAttribute( "dvds", dvds );
                 disp = request.getRequestDispatcher( 
@@ -193,7 +193,7 @@ public class DvdServices extends HttpServlet {
 
         } catch ( SQLException exc ) {
             exc.printStackTrace();
-            // Em caso de erro de SQL, redireciona para página de erro ou listagem
+            // Em caso de erro de SQL
             disp = request.getRequestDispatcher( "/formularios/dvd/listagem.jsp" );
         }
 
