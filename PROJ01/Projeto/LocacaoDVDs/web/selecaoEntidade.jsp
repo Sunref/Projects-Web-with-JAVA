@@ -15,7 +15,7 @@
 
   <body>
 
-    <h1>Sistema para Locação de DVDs</h1>
+    <h1>Selecione a entidade desejada</h1>
 
     <div class="content-wrapper">
         <ul class="nav-menu">
