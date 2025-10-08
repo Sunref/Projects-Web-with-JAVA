@@ -23,8 +23,8 @@ public class ConnectionFactory {
     public static Connection getConnection() throws SQLException {
         // URL JDBC do MariaDB
         String url = "jdbc:mariadb://localhost:3306/locacao_dvds";
-        String usuario = "fernanda";
-        String senha = "senha123";
+        String usuario = "root";
+        String senha = "";
 
         return DriverManager.getConnection(url, usuario, senha);
     }
